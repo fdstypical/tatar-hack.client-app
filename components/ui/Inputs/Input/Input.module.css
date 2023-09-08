@@ -1,0 +1,45 @@
+.input {
+  border: 1.5px solid transparent;
+  color: var(--black);
+  transition: all 0.3s ease;
+}
+
+.input.blue {
+  border-color: var(--blue-light);
+}
+
+.input.pink {
+  border-color: var(--pink);
+}
+
+.input.gray {
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.input.has_errors {
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  width: 100%;
+  padding: 0rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.input.blue + .error {
+  color: var(--blue-light);
+}
+
+.input.pink + .error {
+  color: var(--pink);
+}
+
+.input.gray + .error {
+  color: var(--white);
+}

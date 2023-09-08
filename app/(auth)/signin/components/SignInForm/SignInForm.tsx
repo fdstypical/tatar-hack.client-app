@@ -1,0 +1,105 @@
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Pages } from "@/constants/routing";
+import cx from "classnames";
+import { signIn } from "next-auth/react";
+import { Controller, useForm } from "react-hook-form";
+import { useUrlFromQuery } from "@/hooks";
+import { BaseButton, Input } from "@/components/ui";
+import { IconArrow } from "@/components/icons";
+
+export interface SignInFormProps {}
+
+export const SignInForm: React.FC<SignInFormProps> = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { control, handleSubmit, setError, setValue } = useForm();
+
+  const { push } = useRouter();
+  const callbackUrl = useUrlFromQuery("callbackUrl", Pages.Index);
+
+  const onSubmit = async (data: any) => {
+    setIsLoading(true);
+
+    const res = await signIn("credentials", {
+      ...data,
+      redirect: false,
+    });
+
+    setIsLoading(false);
+
+    if (res?.error) {
+      setError("password", {
+        type: "custom",
+        message: res.error ?? "Incorrect credentials",
+      });
+      setValue("password", null);
+      return;
+    }
+
+    push(callbackUrl);
+  };
+
+  const onEnter = (key: string) => key === "Enter" && handleSubmit(onSubmit)();
+
+  return (
+    <div className="w-full">
+      <div className="flex flex-col gap-4">
+        <div className="flex gap-3">
+          <Controller
+            name="email"
+            control={control}
+            rules={{
+              required: "E-mail is required",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Wrong E-mail format",
+              },
+            }}
+            render={({ field: { value, onChange }, fieldState: { error } }) => (
+              <Input
+                type="email"
+                placeholder="Enter your e-mail"
+                value={value}
+                errors={error?.message ?? null}
+                color={!error ? "gray" : "pink"}
+                onChange={onChange}
+                onKeyDown={onEnter}
+              />
+            )}
+          />
+
+          <Controller
+            name="password"
+            control={control}
+            rules={{ required: "Password is required" }}
+            render={({ field: { value, onChange }, fieldState: { error } }) => (
+              <Input
+                type="password"
+                placeholder="Enter your password"
+                value={value}
+                errors={error?.message ?? null}
+                color={!error ? "gray" : "pink"}
+                onChange={onChange}
+                onKeyDown={onEnter}
+              />
+            )}
+          />
+        </div>
+        <BaseButton
+          className={cx(
+            "w-full rounded-full bg-[color:var(--blue)] px-5 py-1.5",
+            "text-lg text-[color:var(--white)]",
+            "flex items-center justify-between"
+          )}
+          loading={isLoading}
+          onClick={handleSubmit(onSubmit)}
+        >
+          Login
+          <IconArrow />
+        </BaseButton>
+      </div>
+    </div>
+  );
+};

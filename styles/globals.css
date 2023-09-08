@@ -1,11 +1,8 @@
+@import url("./variables");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground: rgba(255, 255, 255, 1);
-  --backbround: rgba(0, 0, 0, 1);
-}
 
 body {
   color: var(--foreground);

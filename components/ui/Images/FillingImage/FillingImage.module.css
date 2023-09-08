@@ -1,0 +1,56 @@
+.mask {
+  mix-blend-mode: hard-light;
+}
+
+.mask.blue {
+  background: var(--blue);
+}
+.mask.blue.to-top {
+  mask-image: linear-gradient(to top, black, transparent);
+}
+.mask.blue.to-bottom {
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.mask.blue-light {
+  background: var(--blue-light);
+}
+.mask.blue-light.to-top {
+  mask-image: linear-gradient(to top, black, transparent);
+}
+.mask.blue-light.to-bottom {
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.mask.gray-light {
+  background: var(--gray-light);
+}
+.mask.gray-light.to-top {
+  mask-image: linear-gradient(to top, black, transparent);
+}
+.mask.gray-light.to-bottom {
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.image.to-top {
+  mask-image: linear-gradient(to top, black, transparent);
+}
+.image.to-bottom {
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.image.fill {
+  object-fit: fill;
+}
+.image.contain {
+  object-fit: contain;
+}
+.image.cover {
+  object-fit: cover;
+}
+.image.none {
+  object-fit: none;
+}
+.image.scale-down {
+  object-fit: scale-down;
+}

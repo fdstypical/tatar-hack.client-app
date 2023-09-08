@@ -1,0 +1,20 @@
+.toggle {
+  background-color: var(--toggle-bg);
+  justify-content: flex-start;
+}
+
+.toggle .toggler {
+  top: 0rem;
+  left: 0rem;
+  color: var(--background);
+  background-color: var(--foreground);
+}
+
+.toggle.checked .toggler {
+  left: 100%;
+  transform: translateX(-100%);
+}
+
+.toggle.disabled {
+  opacity: 0.4;
+}
