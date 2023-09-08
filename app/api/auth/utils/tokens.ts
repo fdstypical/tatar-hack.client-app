@@ -1,3 +1,11 @@
+export const parseJwt = (token: string) => {
+  try {
+    return JSON.parse(atob(token.split(".")[1]))
+  } catch (e) {
+    return null
+  }
+}
+
 export const login = async (
   credentials: Record<"email" | "password", string>
 ) => {
@@ -36,5 +44,10 @@ export const refresh = async (
   if (!res.ok) throw new Error("Invalid token pair")
 
   const response = await res.json()
-  return response
+  const payload = parseJwt(response.accessToken)
+  return {
+    ...response,
+    iat: Math.ceil(Date.now() / 1000),
+    exp: payload.exp,
+  }
 }
