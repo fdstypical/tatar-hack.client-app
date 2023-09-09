@@ -63,8 +63,6 @@ const generateDataset = (
     }
   }
 
-  console.log(dataset)
-
   return dataset as IBubble[][]
 }
 
