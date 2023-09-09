@@ -21,7 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={classNames}>
-        <NextAuthProvider>{children}</NextAuthProvider>
+        {/* <NextAuthProvider>{children}</NextAuthProvider> */}
+        {children}
       </body>
     </html>
   )
