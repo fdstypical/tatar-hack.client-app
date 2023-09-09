@@ -15,6 +15,8 @@ export default function Home() {
   const [data, setData] = useState<any>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
+  console.log(isLoading)
+
   const { data: completed } = useFetch((headers) =>
     fetcher.get("/mark/get-completed", headers)
   )
