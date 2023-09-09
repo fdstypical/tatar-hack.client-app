@@ -22,7 +22,7 @@ export const SignUpForm = () => {
     setIsLoading(true)
 
     const regRes = await fetch(
-      "http://92.51.47.29:81/auth/register",
+      "https://kzn-hack.duckdns.org/auth/register",
       {
         method: "POST",
         headers: {

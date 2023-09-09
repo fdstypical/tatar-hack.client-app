@@ -36,7 +36,7 @@ export default function Home() {
             "Content-Type": "application/json",
           },
           body: {
-            radius: 10000,
+            radius: 5000,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           },
