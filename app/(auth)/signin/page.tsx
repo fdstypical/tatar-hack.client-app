@@ -32,7 +32,9 @@ export default async function SignIn() {
           onClick={() => handleToBack()}
         >
           <div className={styles.backButtonWrapper}>
-            <IconArrowLeft className={styles.iconBack} />
+            <IconArrowLeft
+              className={cx(styles.iconBack, "text-white")}
+            />
             <div
               className={cx(
                 montserratAlternates.className,
