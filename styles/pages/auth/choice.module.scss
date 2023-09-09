@@ -1,0 +1,89 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.firstCircle {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+  border-radius: 120%;
+  height: 56%;
+  top: 66.6%;
+
+  background: #6BC550;
+}
+
+.secondCircle {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+  border-radius: 120%;
+  height: 60%;
+  top: 46%;
+
+  background: #B0DDA2;
+}
+
+.thirdCircle {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+  border-radius: 120%;
+  height: 60%;
+  top: 32.5%;
+
+  background: #D9F0D1;
+}
+
+.ornamentFirst {
+  position: absolute;
+  right: 4.5%;
+  top: 0;
+}
+
+.ornamentSecond {
+  position: absolute;
+  top: 27.5%;
+  right: 34%;
+}
+
+.ornamentThird {
+  position: absolute;
+  left: 33.6%;
+  top: 39%
+}
+
+.ornamentFourth {
+  position: absolute;
+  top: 0;
+  left: 12px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: absolute;
+  left: 30.3%;
+}
+
+.logoText {
+  color: #6BC550;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  margin-top: -30px;
+
+  margin-left: 10px;
+}

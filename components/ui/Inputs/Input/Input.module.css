@@ -2,6 +2,11 @@
   border: 1.5px solid transparent;
   color: var(--black);
   transition: all 0.3s ease;
+
+  background: #FFF;
+  padding: 4px;
+
+  border-radius: 8px;
 }
 
 .input.blue {

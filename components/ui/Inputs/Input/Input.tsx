@@ -29,7 +29,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, errors, color = "blue", ...rest }, ref) => {
     const classNames = useMemo(
       () =>
-        cx("py-3 rounded-full", className, styles.input, {
+        cx("py-3", className, styles.input, {
           [styles.has_errors]: !!errors,
           [styles?.[color]]: color,
         }),

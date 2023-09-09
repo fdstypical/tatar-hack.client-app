@@ -1,0 +1,26 @@
+.buttonsWrapper {
+  position: absolute;
+  top: 72.2%;
+  left: 31.6%;
+
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+
+.pink {
+  background: #F57170;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.green {
+  background: #049444;
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+}

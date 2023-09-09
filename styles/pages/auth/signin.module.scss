@@ -1,0 +1,99 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.firstCircle {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+  border-radius: 120%;
+  height: 56%;
+  top: 47.7%;
+
+  background: #6BC550;
+}
+
+.secondCircle {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+  border-radius: 120%;
+  height: 60%;
+  top: 37.8%;
+
+  background: #B0DDA2;
+}
+
+.thirdCircle {
+  position: absolute;
+
+  left: -10%;
+
+  width: 120%;
+  border-radius: 120%;
+  height: 60%;
+  top: 28.3%;
+
+  background: #D9F0D1;
+}
+
+.rect {
+  width: 100%;
+  height: 20%;
+
+  position: absolute;
+  bottom: 0;
+  background: #6BC550;
+}
+
+.formWrapper {
+  position: absolute;
+  top: 54.3%;
+  left: 19.39%;
+}
+
+.iconBack {
+  margin-top: 3px;
+}
+
+.pageTitle {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 94.9%;
+  letter-spacing: 0.1px;
+
+  color: #F5F5F5;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.titleWrapper {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+
+  top: 31px;
+  left: 37px;
+  gap: 9px;
+}
+
+.backButtonWrapper {
+  display: flex;
+  justify-content: center;
+
+  gap: 6px;
+}
+
+.backText {
+  color: #FFFFFF;
+}
