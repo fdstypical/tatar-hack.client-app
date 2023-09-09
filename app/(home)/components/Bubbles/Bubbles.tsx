@@ -1,10 +1,16 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import cx from "classnames"
 import { randInt } from "@/utils/number"
 import { useIsMounted } from "@/hooks"
+import { IconSmile, IconSmileComplete } from "@/components/icons"
+import { useRouter } from "next/navigation"
 
-export interface BubblesProps {}
+export interface BubblesProps {
+  completed: Record<string, boolean>
+  marks: any[]
+}
 
 export interface IBubble {
   id: number
@@ -13,9 +19,11 @@ export interface IBubble {
   delta: -1 | 1
   width: number
   color: string
+  completed: boolean
 }
 
-const sizes = [100, 80, 60]
+const sizes = [130, 110, 90]
+
 const colors = [
   "rgba(245, 113, 112, 1)",
   "rgba(4, 148, 68, 1)",
@@ -24,7 +32,9 @@ const colors = [
 
 const generateDataset = (
   x: number = 3,
-  y: number = 7
+  y: number = 7,
+  marks: any[],
+  completed: any
 ): IBubble[][] => {
   const dataset: (IBubble | null)[][] = Array.from(
     new Array(y),
@@ -32,28 +42,38 @@ const generateDataset = (
       Array.from(new Array(i % 2 == 0 ? x : x - 1), () => null)
   )
 
+  let idx = 0
+
   for (let i = 0; i < dataset.length; i++) {
     for (let j = 0; j < dataset[i].length; j++) {
       const color = colors[randInt(0, 2)]
       const width = sizes[randInt(0, 2)]
 
       dataset[i][j] = {
-        id: randInt(0, 10000),
+        id: marks?.[idx].id,
         x: randInt(10, 50),
         y: randInt(10, 50),
         width,
         color,
         delta: randInt(0, 1) % 2 == 0 ? -1 : 1,
+        completed: completed?.[marks?.[idx].id],
       }
+
+      idx++
     }
   }
 
   return dataset as IBubble[][]
 }
 
-export const Bubbles: React.FC<BubblesProps> = ({}) => {
+export const Bubbles: React.FC<BubblesProps> = ({
+  completed,
+  marks,
+}) => {
   const isMounted = useIsMounted()
   const [dataset, setDataset] = useState<IBubble[][]>([])
+
+  const { push } = useRouter()
 
   const updateBubbles = () =>
     setDataset((dataset) =>
@@ -71,7 +91,14 @@ export const Bubbles: React.FC<BubblesProps> = ({}) => {
     let timerId: any
 
     if (isMounted) {
-      setDataset(generateDataset())
+      setDataset(
+        generateDataset(
+          2,
+          Math.ceil(marks?.length / 2),
+          marks,
+          completed
+        )
+      )
       timerId = setInterval(updateBubbles, 1500)
     }
 
@@ -79,16 +106,18 @@ export const Bubbles: React.FC<BubblesProps> = ({}) => {
   }, [isMounted])
 
   return (
-    <div className="pt-6 h-full w-full flex flex-col gap-4 overflow-hidden">
+    <div className="pt-6 h-full w-full flex flex-col gap-6 overflow-hidden">
       {dataset.map((row, idx) => (
-        <div key={idx} className="w-full h-full flex gap-4">
+        <div key={idx} className="w-full h-full flex gap-8">
           {row.map((item) => (
             <div
               key={item.id}
               className="flex basis-full relative"
             >
               <div
-                onClick={() => console.log(item.id, item.color)}
+                onClick={() =>
+                  !item.completed && push(`/${item.id}`)
+                }
                 className="absolute transition-all duration-[2000ms] rounded-full flex justify-center items-center"
                 style={{
                   width: `${item.width}px`,
@@ -97,7 +126,31 @@ export const Bubbles: React.FC<BubblesProps> = ({}) => {
                   left: `${item.x}%`,
                   background: item.color,
                 }}
-              />
+              >
+                {item.completed ? (
+                  <IconSmileComplete
+                    className={cx({
+                      "text-white":
+                        item.color === "rgba(245, 113, 112, 1)",
+                      "text-[rgba(107,197,80,1)]":
+                        item.color === "rgba(4, 148, 68, 1)",
+                      "text-[rgba(4,148,68,1)]":
+                        item.color === "rgba(107, 197, 80, 1)",
+                    })}
+                  />
+                ) : (
+                  <IconSmile
+                    className={cx({
+                      "text-white":
+                        item.color === "rgba(245, 113, 112, 1)",
+                      "text-[rgba(107,197,80,1)]":
+                        item.color === "rgba(4, 148, 68, 1)",
+                      "text-[rgba(4,148,68,1)]":
+                        item.color === "rgba(107, 197, 80, 1)",
+                    })}
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>

@@ -6,3 +6,5 @@ export { IconClose } from './IconClose';
 export { IconMap } from './IconMap';
 export { IconProfile } from './IconProfile';
 export { IconRoad } from './IconRoad';
+export { IconSmileComplete } from './IconSmileComplete';
+export { IconSmile } from './IconSmile';
