@@ -1,0 +1,36 @@
+.text {
+  color: #FFF;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.button {
+  background: #F57170;
+  left: 0;
+  width: 233px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleLogin, .passTitle {
+  margin-bottom: 12px;
+}
+
+.loginInput {
+  margin-bottom: 20px;
+  width: 232px;
+}
+
+.passInput {
+  margin-bottom: 28px;
+}
+
+
+.formWrapper {
+  width: 70.3%;
+  display: flex;
+  flex-direction: column;
+}

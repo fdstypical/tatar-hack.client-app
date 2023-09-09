@@ -39,7 +39,7 @@ export const ButtonsComponent = () => {
         className={cx(
           "w-full rounded-full px-5 py-4",
           "text-lg text-[color:var(--white)]",
-          "flex items-center justify-between green",
+          "flex items-center justify-center",
           styles.green
         )}
         loading={isLoading}
