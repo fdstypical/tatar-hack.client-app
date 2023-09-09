@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+
+  height: 100%;
+  width: 100%;
+}
+
+.firstCircle {
+  width: 189%;
+  height: 67.4%;
+  border-radius: 189%;
+  background: #6BC550;
+
+  position: absolute;
+  top: 39%;
+  left: -40%;
+}

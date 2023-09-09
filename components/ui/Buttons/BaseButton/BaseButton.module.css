@@ -1,6 +1,7 @@
 .button {
   position: relative;
   cursor: pointer;
+  padding: 16px;
 }
 
 .button.disabled {

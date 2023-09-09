@@ -1,105 +1,110 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Pages } from "@/constants/routing";
+import React, {useState} from "react";
+import {useRouter} from "next/navigation";
+import {Pages} from "@/constants/routing";
 import cx from "classnames";
-import { signIn } from "next-auth/react";
-import { Controller, useForm } from "react-hook-form";
-import { useUrlFromQuery } from "@/hooks";
-import { BaseButton, Input } from "@/components/ui";
-import { IconArrow } from "@/components/icons";
+import {signIn} from "next-auth/react";
+import {Controller, useForm} from "react-hook-form";
+import {useUrlFromQuery} from "@/hooks/utils";
+import {Input} from '@/components/ui/Inputs/Input'
+import {BaseButton} from "@/components/ui/Buttons/BaseButton";
+import styles from './styles.module.scss'
+import {montserratAlternates} from '@/utils/fonts'
 
-export interface SignInFormProps {}
+
+export interface SignInFormProps {
+}
 
 export const SignInForm: React.FC<SignInFormProps> = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { control, handleSubmit, setError, setValue } = useForm();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const {control, handleSubmit, setError, setValue} = useForm();
 
-  const { push } = useRouter();
-  const callbackUrl = useUrlFromQuery("callbackUrl", Pages.Index);
+    const {push} = useRouter();
+    const callbackUrl = useUrlFromQuery("callbackUrl", Pages.Index);
 
-  const onSubmit = async (data: any) => {
-    setIsLoading(true);
+    const onSubmit = async (data: any) => {
+        setIsLoading(true);
 
-    const res = await signIn("credentials", {
-      ...data,
-      redirect: false,
-    });
+        const res = await signIn("credentials", {
+            ...data,
+            redirect: false,
+        });
 
-    setIsLoading(false);
+        setIsLoading(false);
 
-    if (res?.error) {
-      setError("password", {
-        type: "custom",
-        message: res.error ?? "Incorrect credentials",
-      });
-      setValue("password", null);
-      return;
-    }
+        if (res?.error) {
+            setError("password", {
+                type: "custom",
+                message: res.error ?? "Incorrect credentials",
+            });
+            setValue("password", null);
+            return;
+        }
 
-    push(callbackUrl);
-  };
+        push(callbackUrl);
+    };
 
-  const onEnter = (key: string) => key === "Enter" && handleSubmit(onSubmit)();
+    const onEnter = (key: string) => key === "Enter" && handleSubmit(onSubmit)();
 
-  return (
-    <div className="w-full">
-      <div className="flex flex-col gap-4">
-        <div className="flex gap-3">
-          <Controller
-            name="email"
-            control={control}
-            rules={{
-              required: "E-mail is required",
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: "Wrong E-mail format",
-              },
-            }}
-            render={({ field: { value, onChange }, fieldState: { error } }) => (
-              <Input
-                type="email"
-                placeholder="Enter your e-mail"
-                value={value}
-                errors={error?.message ?? null}
-                color={!error ? "gray" : "pink"}
-                onChange={onChange}
-                onKeyDown={onEnter}
-              />
-            )}
-          />
+    return (
+            <div className={montserratAlternates.className}>
+                <div className={cx(styles.text, styles.titleLogin)}>Имя пользователя</div>
+                <Controller
 
-          <Controller
-            name="password"
-            control={control}
-            rules={{ required: "Password is required" }}
-            render={({ field: { value, onChange }, fieldState: { error } }) => (
-              <Input
-                type="password"
-                placeholder="Enter your password"
-                value={value}
-                errors={error?.message ?? null}
-                color={!error ? "gray" : "pink"}
-                onChange={onChange}
-                onKeyDown={onEnter}
-              />
-            )}
-          />
-        </div>
-        <BaseButton
-          className={cx(
-            "w-full rounded-full bg-[color:var(--blue)] px-5 py-1.5",
-            "text-lg text-[color:var(--white)]",
-            "flex items-center justify-between"
-          )}
-          loading={isLoading}
-          onClick={handleSubmit(onSubmit)}
-        >
-          Login
-          <IconArrow />
-        </BaseButton>
-      </div>
-    </div>
-  );
+                    name="email"
+                    control={control}
+                    rules={{
+                        required: "E-mail is required",
+                        pattern: {
+                            value: /\S+@\S+\.\S+/,
+                            message: "Wrong E-mail format",
+                        },
+                    }}
+                    render={({field: {value, onChange}, fieldState: {error}}) => (
+                        //
+                        <Input
+                            className={styles.loginInput}
+                            type="email"
+                            value={value}
+                            errors={error?.message ?? null}
+                            color={!error ? "gray" : "pink"}
+                            onChange={onChange}
+                            onKeyDown={onEnter}
+                        />
+                    )}
+                />
+
+                <div className={cx(styles.text, styles.passTitle)}>Пароль</div>
+                <Controller
+                    name="password"
+                    control={control}
+                    rules={{required: "Password is required"}}
+                    render={({field: {value, onChange}, fieldState: {error}}) => (
+                        <Input
+                            className={styles.passInput}
+                            type="password"
+                            value={value}
+                            errors={error?.message ?? null}
+                            color={!error ? "gray" : "pink"}
+                            onChange={onChange}
+                            onKeyDown={onEnter}
+                        />
+                    )}
+                />
+                <div className={styles.buttonWrapper}>
+                    <BaseButton
+                        className={cx(
+                            "w-full rounded-full px-5 py-1.5",
+                            "text-lg text-[color:var(--white)]",
+                            "d-flex items-center justify-center"
+                        , styles.button)}
+                        loading={isLoading}
+                        onClick={handleSubmit(onSubmit)}
+                    >
+                        войти
+                    </BaseButton>
+                </div>
+            </div>
+    );
 };
