@@ -6,8 +6,9 @@ import { SignInForm } from "@/app/(auth)/signin/components/SignInForm"
 import { IconArrowLeft } from "@/components/icons"
 import { useRouter } from "next/navigation"
 
-export default async function SignIn() {
+export default function SignIn() {
   const { push } = useRouter()
+
   const handleToBack = () => {
     push("/choice")
   }

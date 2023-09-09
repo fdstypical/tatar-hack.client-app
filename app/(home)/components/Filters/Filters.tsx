@@ -3,9 +3,22 @@
 import { BaseButton } from "@/components/ui"
 import { Nullable } from "@/types/common"
 import cx from "classnames"
-import { useState } from "react"
 
-export interface FilterProps {}
+export interface FilterProps {
+  active: Nullable<number>
+  setActive: (number: Nullable<number>) => void
+  categories: number[]
+}
+
+const Categories = {
+  0: { title: "памятник" },
+  1: { title: "природа" },
+  2: { title: "улица" },
+  3: { title: "архитектура" },
+  4: { title: "религия" },
+  5: { title: "музей" },
+  6: { title: "история" },
+}
 
 enum Color {
   lightgreen,
@@ -28,17 +41,21 @@ const getActiveClassName = (color: Color) =>
     "bg-[#F57170]": color === Color.pink,
   })
 
-const list = [
-  { color: Color.lightgreen, title: "памятники", id: 1 },
-  { color: Color.green, title: "рестораны", id: 2 },
-  { color: Color.pink, title: "музеи", id: 3 },
-  { color: Color.lightgreen, title: "туц туц туц", id: 4 },
-  { color: Color.pink, title: "test test", id: 5 },
-  { color: Color.green, title: "hello world", id: 6 },
-]
-
-export const Filters: React.FC<FilterProps> = () => {
-  const [active, setActive] = useState<Nullable<number>>(null)
+export const Filters: React.FC<FilterProps> = ({
+  active,
+  setActive,
+  categories,
+}) => {
+  const list = categories.map((idx: number) => ({
+    id: idx,
+    title: (Categories as any)[idx]?.title || "постройка",
+    color:
+      idx % 3 == 1
+        ? Color.pink
+        : idx % 3 == 2
+        ? Color.lightgreen
+        : Color.green,
+  }))
 
   return (
     <div className="w-full pb-5 flex gap-3 overflow-y-auto">

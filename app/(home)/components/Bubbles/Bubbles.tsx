@@ -25,9 +25,9 @@ export interface IBubble {
 const sizes = [130, 110, 90]
 
 const colors = [
-  "rgba(245, 113, 112, 1)",
-  "rgba(4, 148, 68, 1)",
-  "rgba(107, 197, 80, 1)",
+  "rgba(245, 113, 112, 1)", // pink
+  "rgba(4, 148, 68, 1)", // green
+  "rgba(107, 197, 80, 1)", // lightgreen
 ]
 
 const generateDataset = (
@@ -46,7 +46,14 @@ const generateDataset = (
 
   for (let i = 0; i < dataset.length; i++) {
     for (let j = 0; j < dataset[i].length; j++) {
-      const color = colors[randInt(0, 2)]
+      const color =
+        colors[
+          marks?.[idx]?.type % 3 == 1
+            ? 0
+            : marks?.[idx]?.type % 3 == 2
+            ? 2
+            : 1
+        ]
       const width = sizes[randInt(0, 2)]
 
       dataset[i][j] = {
@@ -103,7 +110,7 @@ export const Bubbles: React.FC<BubblesProps> = ({
     }
 
     return () => clearInterval(timerId)
-  }, [isMounted])
+  }, [isMounted, marks, completed])
 
   return (
     <div className="pt-6 h-full w-full flex flex-col gap-6 overflow-hidden">
