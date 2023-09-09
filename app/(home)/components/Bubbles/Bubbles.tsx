@@ -50,18 +50,20 @@ const generateDataset = (
       const width = sizes[randInt(0, 2)]
 
       dataset[i][j] = {
-        id: marks?.[idx].id,
+        id: marks?.[idx]?.id,
         x: randInt(10, 50),
         y: randInt(10, 50),
         width,
         color,
         delta: randInt(0, 1) % 2 == 0 ? -1 : 1,
-        completed: completed?.[marks?.[idx].id],
+        completed: completed?.[marks?.[idx]?.id],
       }
 
       idx++
     }
   }
+
+  console.log(dataset)
 
   return dataset as IBubble[][]
 }
@@ -93,8 +95,8 @@ export const Bubbles: React.FC<BubblesProps> = ({
     if (isMounted) {
       setDataset(
         generateDataset(
-          2,
-          Math.ceil(marks?.length / 2),
+          marks.length < 2 ? marks.length : 2,
+          Math.ceil(marks.length / 2),
           marks,
           completed
         )
