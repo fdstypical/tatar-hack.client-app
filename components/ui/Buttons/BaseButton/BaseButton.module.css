@@ -17,6 +17,7 @@
   padding: 0rem;
   transform: none;
   background-color: transparent;
+  border: none;
 }
 
 .button.loading .inner {

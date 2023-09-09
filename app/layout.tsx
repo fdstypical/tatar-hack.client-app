@@ -16,7 +16,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const classNames = cx(inter.className, "min-h-screen")
+  const classNames = cx(inter.className, "h-screen")
 
   return (
     <html lang="en">

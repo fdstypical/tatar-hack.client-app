@@ -2,3 +2,6 @@
 // Don't edit it manually
 export { IconArrow } from './IconArrow';
 export { IconClose } from './IconClose';
+export { IconMap } from './IconMap';
+export { IconProfile } from './IconProfile';
+export { IconRoad } from './IconRoad';

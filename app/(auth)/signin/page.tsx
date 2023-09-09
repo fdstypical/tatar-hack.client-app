@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default async function SignIn() {
   return (
-    <div className="flex w-full justify-end">
+    <div className="w-full">
       <div className="w-full min-w-[45%] sm:w-[25rem]">
         <SignInForm />
       </div>
