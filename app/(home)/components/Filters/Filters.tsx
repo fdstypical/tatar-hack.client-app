@@ -1,7 +1,6 @@
 "use client"
 
 import { BaseButton } from "@/components/ui"
-import { useScreenSizes } from "@/hooks"
 import { Nullable } from "@/types/common"
 import cx from "classnames"
 import { useState } from "react"

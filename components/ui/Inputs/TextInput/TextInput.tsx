@@ -2,7 +2,7 @@
 
 import React, { forwardRef, useMemo } from "react"
 import cx from "classnames"
-import { Nullable } from "@/types"
+import { Nullable } from "@/types/common"
 
 export type InputPropsWithoutWrapped = Omit<
   React.ComponentPropsWithoutRef<"input">,
