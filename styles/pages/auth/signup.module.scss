@@ -16,3 +16,51 @@
   top: 39%;
   left: -40%;
 }
+
+.formWrapper {
+  width: 100%;
+  position: absolute;
+  top: 51%;
+  left: 19.39%;
+}
+
+
+.iconBack {
+  margin-top: 3px;
+}
+
+.pageTitle {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 94.9%;
+  letter-spacing: 0.1px;
+
+  color: #F5F5F5;
+
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.titleWrapper {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+
+  top: 31px;
+  left: 37px;
+  gap: 9px;
+}
+
+.backButtonWrapper {
+  display: flex;
+  justify-content: center;
+
+  gap: 6px;
+}
+
+.backText {
+  color: #FFFFFF;
+}
