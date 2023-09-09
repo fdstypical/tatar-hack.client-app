@@ -5,7 +5,6 @@ import cx from "classnames"
 import { SignInForm } from "@/app/(auth)/signin/components/SignInForm"
 import { IconArrowLeft } from "@/components/icons"
 import { useRouter } from "next/navigation"
-import { montserratAlternates } from "@/utils/fonts"
 
 export default async function SignIn() {
   const { push } = useRouter()
@@ -14,13 +13,7 @@ export default async function SignIn() {
   }
 
   return (
-    <div
-      className={cx(
-        "relative",
-        styles.wrapper,
-        montserratAlternates.className
-      )}
-    >
+    <div className={cx("relative", styles.wrapper)}>
       <div className={styles.thirdCircle}></div>
       <div className={styles.secondCircle}></div>
       <div className={styles.firstCircle}></div>
@@ -35,14 +28,7 @@ export default async function SignIn() {
             <IconArrowLeft
               className={cx(styles.iconBack, "text-white")}
             />
-            <div
-              className={cx(
-                montserratAlternates.className,
-                styles.backText
-              )}
-            >
-              Назад
-            </div>
+            <div className={cx(styles.backText)}>Назад</div>
           </div>
           <div className={styles.pageTitle}>Вход</div>
         </div>

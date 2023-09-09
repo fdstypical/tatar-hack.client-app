@@ -5,7 +5,6 @@ import { Controller, useForm } from "react-hook-form"
 import { useUrlFromQuery } from "@/hooks/utils"
 import { Pages } from "@/constants/routing"
 import { signIn } from "next-auth/react"
-import { montserratAlternates } from "@/utils/fonts"
 import styles from "@/app/(auth)/signup/components/styles.module.scss"
 import { useRouter } from "next/navigation"
 import cx from "classnames"
@@ -69,12 +68,7 @@ export const SignUpForm = () => {
     key === "Enter" && handleSubmit(onSubmitReg)()
 
   return (
-    <div
-      className={cx(
-        montserratAlternates.className,
-        styles.formWrapper
-      )}
-    >
+    <div className={cx(styles.formWrapper)}>
       <div className={cx(styles.text, styles.passTitle)}>
         Имя пользователя
       </div>

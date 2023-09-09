@@ -4,17 +4,9 @@ import styles from "@/styles/pages/auth/choice.module.scss"
 import cx from "classnames"
 import { ButtonsComponent } from "@/app/(auth)/choice/components/Buttons"
 
-import { montserratAlternates } from "@/utils/fonts"
-
 export default function MainAuthPage() {
   return (
-    <div
-      className={cx(
-        "relative",
-        styles.wrapper,
-        montserratAlternates.className
-      )}
-    >
+    <div className={cx("relative", styles.wrapper)}>
       <div className={styles.thirdCircle}></div>
 
       <svg
@@ -207,14 +199,7 @@ export default function MainAuthPage() {
             stroke-linecap="round"
           />
         </svg>
-        <div
-          className={cx(
-            styles.logoText,
-            montserratAlternates.className
-          )}
-        >
-          СМАЙЛСТРИТ
-        </div>
+        <div className={cx(styles.logoText)}>СМАЙЛСТРИТ</div>
       </div>
 
       <div className={styles.firstCircle}></div>

@@ -1,3 +1,4 @@
+import React from "react"
 import type { Metadata } from "next"
 import cx from "classnames"
 import { montserratAlternates } from "@/utils/fonts"
@@ -22,7 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={classNames}>
-        <NextAuthProvider>{children}</NextAuthProvider>
+        {/* <NextAuthProvider>{children}</NextAuthProvider> */}
+        {children}
       </body>
     </html>
   )

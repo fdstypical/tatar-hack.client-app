@@ -1,4 +1,4 @@
-// import { Menu } from "./components/Menu"
+import React from "react"
 
 export default function HomeLayout({
   children,
@@ -8,10 +8,6 @@ export default function HomeLayout({
   return (
     <main className="h-full pb-[60px] relative bg-gradient-to-b from-[rgba(238,245,240,1)] to-[rgba(217,240,209,1)]">
       {children}
-
-      {/* <div className="sticky w-full bottom-0 left-0">
-        <Menu />
-      </div> */}
     </main>
   )
 }

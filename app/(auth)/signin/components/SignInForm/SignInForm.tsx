@@ -10,7 +10,6 @@ import { useUrlFromQuery } from "@/hooks/utils"
 import { Input } from "@/components/ui/Inputs/Input"
 import { BaseButton } from "@/components/ui/Buttons/BaseButton"
 import styles from "./styles.module.scss"
-import { montserratAlternates } from "@/utils/fonts"
 
 export interface SignInFormProps {}
 
@@ -47,7 +46,7 @@ export const SignInForm: React.FC<SignInFormProps> = () => {
     key === "Enter" && handleSubmit(onSubmit)()
 
   return (
-    <div className={montserratAlternates.className}>
+    <div>
       <div className={cx(styles.text, styles.titleLogin)}>
         Имя пользователя
       </div>
