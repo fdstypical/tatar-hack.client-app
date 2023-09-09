@@ -9,13 +9,16 @@ export const parseJwt = (token: string) => {
 export const login = async (
   credentials: Record<"email" | "password", string>
 ) => {
-  const res = await fetch("http://92.51.47.29:81/auth/login", {
-    method: "POST",
-    body: JSON.stringify(credentials),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const res = await fetch(
+    "https://kzn-hack.duckdns.org/auth/login",
+    {
+      method: "POST",
+      body: JSON.stringify(credentials),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
 
   if (!res.ok) throw new Error("Bad Credentials")
 
@@ -28,7 +31,7 @@ export const refresh = async (
   refresh: string
 ) => {
   const res = await fetch(
-    "http://92.51.47.29:81/token/refresh-token",
+    "https://kzn-hack.duckdns.org/token/refresh-token",
     {
       method: "POST",
       body: JSON.stringify({
