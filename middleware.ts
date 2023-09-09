@@ -6,16 +6,18 @@ export default withAuth({
   pages,
   callbacks: {
     authorized: ({ req: { nextUrl }, token }) => {
-      const { pathname } = nextUrl
+      // const { pathname } = nextUrl
 
-      if (
-        token ||
-        pathname.includes(Pages.SignUp) ||
-        pathname.includes(Pages.SignIn) ||
-        pathname.includes(Pages.Choice)
-      )
-        return true
-      return false
+      // if (
+      //   token ||
+      //   pathname.includes(Pages.SignUp) ||
+      //   pathname.includes(Pages.SignIn) ||
+      //   pathname.includes(Pages.Choice)
+      // )
+      //   return true
+      // return false
+
+      return true
     },
   },
 })
