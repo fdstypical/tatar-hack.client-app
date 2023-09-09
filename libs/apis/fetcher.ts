@@ -9,11 +9,8 @@ import {
   RequestMethods,
 } from "./types"
 
-export abstract class BaseFetcher {
-  constructor(
-    protected headersGetter?: () => HeadersInit,
-    protected _onError?: OnErrorCallback
-  ) {}
+export class BaseFetcher {
+  constructor(protected _onError?: OnErrorCallback) {}
 
   protected get onError(): OnErrorCallback | undefined {
     return this._onError
@@ -27,13 +24,10 @@ export abstract class BaseFetcher {
     input: FetcherUri,
     init?: FetcherParams<D>
   ): Promise<T> {
-    const headers = this.headersGetter?.()
-
     const res = await fetch(
       this.createUri(input, init?.params),
       {
         headers: {
-          ...headers,
           ...init?.headers,
           "Content-Type": "application/json",
         },
@@ -76,7 +70,7 @@ export abstract class BaseFetcher {
     const queries = queryParams.toString()
     const queryString = queries.length > 0 ? `?${queries}` : ""
 
-    return `${configsRegistry.RootUrl}${uri}${queryString}`
+    return `${configsRegistry.ApiUrl}${uri}${queryString}`
   }
 
   public get<T>(
@@ -129,3 +123,5 @@ export abstract class BaseFetcher {
     })
   }
 }
+
+export const fetcher = new BaseFetcher()
