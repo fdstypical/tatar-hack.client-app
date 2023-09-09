@@ -34,8 +34,6 @@ export default function Mark({
         .finally(() => setIsLoading(false))
   }, [session, position])
 
-  console.log(data)
-
   return (
     <div className="w-full h-full">
       {isLoading && <Loader className="mx-auto text-2xl" />}
