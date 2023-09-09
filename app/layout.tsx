@@ -1,10 +1,8 @@
 import type { Metadata } from "next"
 import cx from "classnames"
-import { Inter } from "next/font/google"
+import { montserratAlternates } from "@/utils/fonts"
 import { NextAuthProvider } from "@/providers/NextAuthProvider"
 import "../styles/globals.css"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Смайлстрит",
@@ -16,7 +14,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const classNames = cx(inter.className, "h-screen")
+  const classNames = cx(
+    montserratAlternates.className,
+    "h-screen"
+  )
 
   return (
     <html lang="en">
