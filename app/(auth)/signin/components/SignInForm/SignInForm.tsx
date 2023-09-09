@@ -6,7 +6,7 @@ import { Pages } from "@/constants/routing"
 import cx from "classnames"
 import { signIn } from "next-auth/react"
 import { Controller, useForm } from "react-hook-form"
-import { useUrlFromQuery } from "@/hooks/utils"
+// import { useUrlFromQuery } from "@/hooks/utils"
 import { Input } from "@/components/ui/Inputs/Input"
 import { BaseButton } from "@/components/ui/Buttons/BaseButton"
 import styles from "./styles.module.scss"
@@ -18,7 +18,7 @@ export const SignInForm: React.FC<SignInFormProps> = () => {
   const { control, handleSubmit, setError, setValue } = useForm()
 
   const { push } = useRouter()
-  const callbackUrl = useUrlFromQuery("callbackUrl", Pages.Index)
+  // const callbackUrl = useUrlFromQuery("callbackUrl", Pages.Index)
 
   const onSubmit = async (data: any) => {
     setIsLoading(true)
@@ -39,7 +39,7 @@ export const SignInForm: React.FC<SignInFormProps> = () => {
       return
     }
 
-    push(callbackUrl)
+    // push(callbackUrl)
   }
 
   const onEnter = (key: string) =>
