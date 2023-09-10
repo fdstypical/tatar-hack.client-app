@@ -12,7 +12,7 @@ export default function Profile() {
   >((headers) => fetcher.get("/mark/get-completed", headers))
 
   return (
-    <div className="w-full pt-4 px-2 flex flex-col">
+    <div className="w-full h-full pt-4 px-2 flex flex-col">
       {isLoading && <Loader className="mx-auto text-2xl" />}
 
       <h1 className="text-2xl font-medium mb-6">
