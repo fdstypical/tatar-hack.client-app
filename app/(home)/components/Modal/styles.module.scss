@@ -1,0 +1,41 @@
+//@import 'src/styles/base/vars';
+
+.modal {
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.modalActive {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modalContent {
+  padding: 20px;
+  background-color: #FFFFFF;
+  width: 30%;
+  max-height: 100%;
+  overflow: auto;
+  transform: scale(0.5);
+  transition: 0.4s all;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.modalContentActive {
+  transform: scale(1);
+}

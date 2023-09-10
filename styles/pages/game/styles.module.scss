@@ -1,0 +1,54 @@
+.gameWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: end;
+
+  background: #48B177;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding-bottom: 8px;
+}
+
+.emojiLayer {
+  display: flex;
+  justify-content: end;
+
+  padding-top: 8px;
+  padding-right: 8px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  margin-top: 10%;
+}
+
+.footer {
+  height: 20%;
+  width: 100%;
+
+  background: #48B177;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  background: #4cdc8c;
+  width: 80%;
+}
