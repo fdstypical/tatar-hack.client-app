@@ -113,7 +113,7 @@ export default function Mark({
           setDate(data)
           editEmoji(distance)
 
-          if (data.distanceInMeters < 2000) {
+          if (data.distanceInMeters < 200) {
             successHandle()
             setAction(true)
           }
