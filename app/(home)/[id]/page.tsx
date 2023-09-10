@@ -12,6 +12,7 @@ import { montserratAlternates, notoEmoji } from "@/utils/fonts"
 import { Modal } from "@/app/(home)/components/Modal"
 import { BaseButton } from "@/components/ui/Buttons/BaseButton"
 import { useRouter } from "next/navigation"
+import { parseJwt } from "@/app/api/auth/utils"
 
 export default function Mark({
   params,
@@ -77,17 +78,18 @@ export default function Mark({
       })
 
       await fetcher
-        .post("/mark/reach", {
-          headers: {
-            Authorization: `Bearer ${session.user.accessToken}`,
-            "Content-Type": "application/json",
-          },
-          body: {
-            markId: Number(params.id),
-            atitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          },
-        })
+        .post(
+          `/user/add-mark/${
+            parseJwt(session.user.accessToken).unique_name
+          }`,
+          {
+            headers: {
+              // Authorization: `Bearer ${session.user.accessToken}`,
+              "Content-Type": "application/json",
+            },
+            body: Number(params.id),
+          }
+        )
         .catch(console.log)
     }
   }
@@ -111,7 +113,7 @@ export default function Mark({
           setDate(data)
           editEmoji(distance)
 
-          if (data.distanceInMeters < 200) {
+          if (data.distanceInMeters < 2000) {
             successHandle()
             setAction(true)
           }
