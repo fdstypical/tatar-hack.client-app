@@ -76,17 +76,19 @@ export default function Mark({
         }
       })
 
-      await fetcher.post("/mark/reach", {
-        headers: {
-          Authorization: `Bearer ${session.user.accessToken}`,
-          "Content-Type": "application/json",
-        },
-        body: {
-          markId: params.id,
-          atitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        },
-      })
+      await fetcher
+        .post("/mark/reach", {
+          headers: {
+            Authorization: `Bearer ${session.user.accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: {
+            markId: Number(params.id),
+            atitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          },
+        })
+        .catch(console.log)
     }
   }
 
