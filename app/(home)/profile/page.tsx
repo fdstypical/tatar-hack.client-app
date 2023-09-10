@@ -95,7 +95,7 @@ export default function Profile() {
           <span className="text-5xl">👑</span>
         </div>
 
-        <div>
+        <div className={'overflow-hidden'}>
           <h2 className="text-xl font-semibold mb-2">
             Эксперт по достопримечательностям
           </h2>
