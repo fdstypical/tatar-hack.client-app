@@ -1,4 +1,7 @@
-import { Montserrat_Alternates, Noto_Color_Emoji } from "next/font/google"
+import {
+  Montserrat_Alternates,
+  Noto_Color_Emoji,
+} from "next/font/google"
 
 export const montserratAlternates = Montserrat_Alternates({
   subsets: ["cyrillic"],
@@ -6,6 +9,6 @@ export const montserratAlternates = Montserrat_Alternates({
 })
 
 export const notoEmoji = Noto_Color_Emoji({
-  subsets: ['emoji'],
+  subsets: ["emoji"],
   weight: ["400"],
 })
